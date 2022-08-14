@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/color.xml" value="0.1575" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/home_icon.xml" value="0.1575" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_favorite.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_home.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/menu/bottom_menu.xml" value="0.23125" />
       </map>
     </option>
   </component>
