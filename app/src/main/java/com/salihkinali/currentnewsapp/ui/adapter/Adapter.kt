@@ -1,5 +1,7 @@
 package com.salihkinali.currentnewsapp.ui.adapter
 
+import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,9 +9,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.salihkinali.currentnewsapp.data.model.Article
+import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.databinding.NewsCardDesignBinding
+import com.salihkinali.currentnewsapp.util.downloadImage
 
-class Adapter :ListAdapter<Article,Adapter.ViewHolder>(DiffUtilCallBack){
+class Adapter(private val context: Context,private val itemClick: (Article) -> Unit):ListAdapter<Article,Adapter.ViewHolder>(DiffUtilCallBack){
     class ViewHolder(val cardDesignBinding: NewsCardDesignBinding):
         RecyclerView.ViewHolder(cardDesignBinding.root)
 
@@ -22,10 +26,11 @@ class Adapter :ListAdapter<Article,Adapter.ViewHolder>(DiffUtilCallBack){
        val item = getItem(position)
         holder.cardDesignBinding.apply {
             titleText.text = item.title
-            Glide.with(shapeableImageView.context)
-                .load(item.image)
-                .into(shapeableImageView)
+            shapeableImageView.downloadImage(item.image)
             publishedTime.text = item.publishedAt
+            root.setOnClickListener {
+                itemClick.invoke(item)
+            }
         }
     }
     companion object DiffUtilCallBack : DiffUtil.ItemCallback<Article>() {

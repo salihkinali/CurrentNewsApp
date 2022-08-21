@@ -4,4 +4,9 @@
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="setting">Setting</string>
+    <string name="news_image">News Image</string>
+    <string name="search_text">You can search everything in the world.</string>
+    <string name="search">Search</string>
+    <string name="go_to_source">Go to Source</string>
+    <string name="example">Example</string>
 </resources>

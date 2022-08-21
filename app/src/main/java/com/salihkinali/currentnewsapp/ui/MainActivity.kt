@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.salihkinali.currentnewsapp.R
 import com.salihkinali.currentnewsapp.databinding.ActivityMainBinding
+import com.salihkinali.currentnewsapp.util.visible
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -15,8 +16,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
         val navHostFragment = supportFragmentManager
-                .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
         NavigationUI.setupWithNavController(binding.bottomNavigation, navHostFragment.navController)
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.newDetailFragment -> hideBottomNavigation()
+                else -> showBottomNavigation()
+            }
+        }
+
     }
+
+    private fun hideBottomNavigation() {
+        binding.bottomNavigation.visible(false)
+    }
+
+    private fun showBottomNavigation() {
+        binding.bottomNavigation.visible(true)
+    }
+
 }

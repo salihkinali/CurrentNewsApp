@@ -2,6 +2,7 @@ package com.salihkinali.currentnewsapp.data.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Article(
     @SerializedName("content")
@@ -18,4 +19,4 @@ data class Article(
     val title: String,
     @SerializedName("url")
     val url: String
-)
+):Serializable

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salihkinali.currentnewsapp.databinding.FragmentHomeBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
@@ -19,7 +19,13 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: NewsViewModel
-    private lateinit var adapter: Adapter
+    private val adapter by lazy { 
+       Adapter(requireContext()) {article ->
+           val action = HomeFragmentDirections.homeToDetailFragment(article)
+           findNavController().navigate(action)
+       }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,13 +71,6 @@ class HomeFragment : Fragment() {
 
     private fun setupUI() {
         binding.recylerView.layoutManager = LinearLayoutManager(activity)
-        adapter = Adapter()
-        binding.recylerView.addItemDecoration(
-            DividerItemDecoration(
-                binding.recylerView.context,
-                (binding.recylerView.layoutManager as LinearLayoutManager).orientation
-            )
-        )
         binding.recylerView.adapter = adapter
     }
     override fun onDestroyView() {

@@ -11,12 +11,26 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/home_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
+            android:id="@+id/home_to_detailFragment"
+            app:destination="@id/newDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.salihkinali.currentnewsapp.ui.fragment.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/newDetailFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.NewDetailFragment"
+        android:label="fragment_new_detail"
+        tools:layout="@layout/fragment_new_detail" >
+        <argument
+            android:name="article"
+            app:argType="com.salihkinali.currentnewsapp.data.model.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchingFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

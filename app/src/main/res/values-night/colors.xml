@@ -2,4 +2,5 @@
 <resources>
     <color name="gray">#F5F5F5</color>
     <color name="material_colors">#B1AA3C</color>
+    <color name="orange">#F7971E</color>
 </resources>

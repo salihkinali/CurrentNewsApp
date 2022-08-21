@@ -66,4 +66,6 @@ dependencies {
 
     //Kotlin Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
-}
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'}
