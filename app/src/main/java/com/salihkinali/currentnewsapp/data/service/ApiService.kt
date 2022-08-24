@@ -14,4 +14,10 @@ interface ApiService {
         @Query("lang")  lang: String = "en"
     ):News
 
+    @GET("api/v4/search")
+    suspend fun getResult(
+        @Query("q") query:String? = null,
+        @Query("token") token:String = API_KEY,
+    ): News
+
 }

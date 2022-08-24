@@ -32,5 +32,9 @@
         android:id="@+id/searchingFragment"
         android:name="com.salihkinali.currentnewsapp.ui.fragment.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/search_to_newDetailFragment"
+            app:destination="@id/newDetailFragment" />
+    </fragment>
 </navigation>
