@@ -14,4 +14,17 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Launcher theme. -->
+    <style name="Launcher" parent="Theme.AppCompat.Light.NoActionBar">   <!-- PARENT ALMAK ZORUNDA  -->
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+    <!-- Launcher theme Full Screen -->
+    <style name="LauncherFullScreen">   <!-- PARENT ZORUNLU DEĞİL  -->
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

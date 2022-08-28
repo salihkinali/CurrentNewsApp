@@ -79,13 +79,12 @@ class SearchFragment : Fragment() {
     private fun getResultFilter() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                binding.nonResult.text = p0
+                viewModel.searchQuery(p0)
                 return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                viewModel.searchQuery(query)
-                return true
+                return false
             }
         })
     }

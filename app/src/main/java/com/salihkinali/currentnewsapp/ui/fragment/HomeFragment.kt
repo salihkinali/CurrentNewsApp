@@ -13,17 +13,18 @@ import com.salihkinali.currentnewsapp.databinding.FragmentHomeBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
 import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModel
 import com.salihkinali.currentnewsapp.util.Status
+import com.salihkinali.currentnewsapp.util.visible
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: NewsViewModel
-    private val adapter by lazy { 
-       Adapter(requireContext()) {article ->
-           val action = HomeFragmentDirections.homeToDetailFragment(article)
-           findNavController().navigate(action)
-       }
+    private val adapter by lazy {
+        Adapter(requireContext()) { article ->
+            val action = HomeFragmentDirections.homeToDetailFragment(article)
+            findNavController().navigate(action)
+        }
     }
 
     override fun onCreateView(
@@ -43,22 +44,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.getUsers().observe(viewLifecycleOwner) { it ->
+        viewModel.responseNews.observe(viewLifecycleOwner) { it ->
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        binding.progressBar.visibility = View.GONE
-                        resource.data?.let {
-                            adapter.submitList(it.articles)
-                        }
-
+                        binding.recylerView.visible(true)
+                        binding.progressBar.visible(false)
+                        resource.data?.let { adapter.submitList(it.articles) }
                     }
                     Status.ERROR -> {
-                        binding.progressBar.visibility = View.GONE
-                        Toast.makeText(requireContext(), "Başarısız", Toast.LENGTH_SHORT).show()
+                        binding.recylerView.visible(true)
+                        binding.progressBar.visible(false)
+                        Toast.makeText(requireActivity(), resource.message, Toast.LENGTH_SHORT)
+                            .show()
                     }
                     Status.LOADING -> {
-                        binding.progressBar.visibility = View.VISIBLE
+                        binding.recylerView.visible(false)
+                        binding.progressBar.visible(true)
                     }
                 }
             }
@@ -73,6 +75,7 @@ class HomeFragment : Fragment() {
         binding.recylerView.layoutManager = LinearLayoutManager(activity)
         binding.recylerView.adapter = adapter
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

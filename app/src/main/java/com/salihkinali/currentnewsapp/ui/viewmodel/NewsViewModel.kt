@@ -11,15 +11,34 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class NewsViewModel(): ViewModel() {
+class NewsViewModel() : ViewModel() {
 
-      private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
-        fun getUsers() = liveData(Dispatchers.IO) {
-            emit(Resource.loading(data = null))
+    private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
+    private var _responseNews = MutableLiveData<Resource<News>>()
+    val responseNews: LiveData<Resource<News>> get() = _responseNews
+
+    init {
+        getNews()
+    }
+
+    private fun getNews() {
+        _responseNews.postValue(Resource.loading(data = null))
+        viewModelScope.launch(Dispatchers.IO) {
             try {
-                emit(Resource.success(data = mainRepository.getNews()))
-            } catch (exception: Exception) {
-                emit(Resource.error(data = null, msg = exception.message ?: "Error Occurred!"))
+                val result = mainRepository.getNews()
+                _responseNews.postValue(Resource.success(data = result))
+            }catch (e:Exception){
+                _responseNews.postValue(Resource.error(data = null, message = e.toString()))
             }
         }
+    }
+
+//    fun getUsers() = liveData(Dispatchers.IO) {
+//        emit(Resource.loading(data = null))
+//        try {
+//            emit(Resource.success(data = mainRepository.getNews()))
+//        } catch (exception: Exception) {
+//            emit(Resource.error(data = null, msg = exception.message ?: "Error Occurred!"))
+//        }
+//    }
 }

@@ -68,4 +68,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
     //Picasso
-    implementation 'com.squareup.picasso:picasso:2.8'}
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    //Lottie
+    implementation ("com.airbnb.android:lottie:3.4.0")
+
+}
