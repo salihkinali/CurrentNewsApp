@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_margin">10dp</dimen>
+    <dimen name="material_cardview">5dp</dimen>
+    <dimen name="material_cardview_top">7dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="imageview_width">170dp</dimen>
+    <dimen name="imageview_height">120dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+</resources>

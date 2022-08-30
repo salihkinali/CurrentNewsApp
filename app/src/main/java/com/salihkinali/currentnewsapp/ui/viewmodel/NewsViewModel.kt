@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class NewsViewModel() : ViewModel() {
+class NewsViewModel : ViewModel() {
 
     private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
     private var _responseNews = MutableLiveData<Resource<News>>()
@@ -33,12 +33,4 @@ class NewsViewModel() : ViewModel() {
         }
     }
 
-//    fun getUsers() = liveData(Dispatchers.IO) {
-//        emit(Resource.loading(data = null))
-//        try {
-//            emit(Resource.success(data = mainRepository.getNews()))
-//        } catch (exception: Exception) {
-//            emit(Resource.error(data = null, msg = exception.message ?: "Error Occurred!"))
-//        }
-//    }
 }

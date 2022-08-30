@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="5dp"
-    android:layout_marginEnd="5dp"
-    android:layout_marginTop="7dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/material_cardview"
+    android:layout_marginTop="@dimen/material_cardview_top"
     android:layout_width="match_parent"
     android:elevation="10dp"
-    android:layout_height="wrap_content">
+    android:layout_marginEnd="@dimen/material_cardview">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/shapeableImageView"
-            android:layout_width="170dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewImage"
+            android:layout_width="@dimen/imageview_width"
+            android:layout_height="@dimen/imageview_height"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:layout_marginBottom="@dimen/_10dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintCircleRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/teal_700" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:background="@color/teal_700" />
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="@dimen/_5dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginBottom="@dimen/_10dp"
             android:fontFamily="sans-serif-condensed-light"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
+            app:layout_constraintBottom_toTopOf="@id/publishedTime"
+            app:layout_constraintEnd_toStartOf="@id/cardViewImage"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/shapeableImageView"
-            tools:text="adasddadasda" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="This is title new text" />
 
         <TextView
             android:id="@+id/publishedTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
-            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/_10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/titleText"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/titleText"
             tools:text="Yayınlanma Tarihi: 20/12/2022" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

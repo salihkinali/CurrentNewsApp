@@ -15,13 +15,17 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.1734375" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_favorite.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_home.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_new_detail.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_new_detail.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_search.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_web_view.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/header_item.xml" value="0.23125" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/header_title.xml" value="0.23125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/news_card_design.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/top_list_new.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/top_news_design.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/menu/bottom_menu.xml" value="0.23125" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/mipmap-anydpi-v26/ic_app_launcher.xml" value="0.1575" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1575" />
       </map>
     </option>
   </component>

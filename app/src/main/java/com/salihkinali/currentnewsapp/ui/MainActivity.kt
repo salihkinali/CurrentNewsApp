@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.newDetailFragment -> hideBottomNavigation()
+                R.id.webViewFragment -> hideBottomNavigation()
                 else -> showBottomNavigation()
             }
         }
-
     }
 
     private fun hideBottomNavigation() {

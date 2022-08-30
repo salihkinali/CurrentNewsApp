@@ -9,4 +9,6 @@
     <string name="search">Search</string>
     <string name="go_to_source">Go to Source</string>
     <string name="example">Example</string>
+    <string name="add_to_favorite_list">Add to Favorite</string>
+    <string name="added_favorite">Added Favorite</string>
 </resources>

@@ -58,17 +58,37 @@
                 android:textStyle="bold"
                 tools:text="@string/example" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/sourcePlace"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/dark_gray"
-                android:text="@string/go_to_source"
-                android:textColor="@color/white"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                app:tint="@color/orange" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sourcePlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="0.5"
+                    android:backgroundTint="@color/dark_gray"
+                    android:text="@string/go_to_source"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:iconTint="@drawable/favorite_icon"
+                    app:tint="@color/orange" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addFavorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="0.5"
+                    android:backgroundTint="@color/orange"
+                    android:text="@string/add_to_favorite_list"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    app:icon="@drawable/favorite_icon"
+                    app:iconGravity="textStart" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/publishedTime"
