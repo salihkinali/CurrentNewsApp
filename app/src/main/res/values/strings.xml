@@ -11,4 +11,5 @@
     <string name="example">Example</string>
     <string name="add_to_favorite_list">Add to Favorite</string>
     <string name="added_favorite">Added Favorite</string>
+    <string name="your_saved_articles">Your Saved Articles</string>
 </resources>

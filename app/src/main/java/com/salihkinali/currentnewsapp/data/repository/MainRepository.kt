@@ -6,4 +6,5 @@ class MainRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getNews() = apiHelper.getNews()
     suspend fun getResult(query: String?) = apiHelper.getResult(query)
+
 }

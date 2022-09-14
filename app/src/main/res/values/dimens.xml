@@ -8,4 +8,5 @@
     <dimen name="imageview_height">120dp</dimen>
     <dimen name="_10dp">10dp</dimen>
     <dimen name="_5dp">5dp</dimen>
+    <dimen name="_18sp">18sp</dimen>
 </resources>

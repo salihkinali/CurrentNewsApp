@@ -19,9 +19,10 @@ class SearchViewModel : ViewModel() {
     val status: LiveData<Resource<News>> get() = _status
 
     fun searchQuery(query: String?) {
+
         viewModelScope.launch(Dispatchers.IO) {
+            _status.postValue(Resource(Status.LOADING,data = null,message = null))
             delay(1000)
-            Resource.loading(data = null)
             try {
                 query?.let {
                     _status.postValue(Resource(status = Status.SUCCESS, data = mainRepository.getResult(it), message = null))

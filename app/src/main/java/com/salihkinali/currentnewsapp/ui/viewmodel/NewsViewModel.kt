@@ -1,7 +1,10 @@
 package com.salihkinali.currentnewsapp.ui.viewmodel
 
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.data.repository.MainRepository
 import com.salihkinali.currentnewsapp.data.service.ApiHelper
