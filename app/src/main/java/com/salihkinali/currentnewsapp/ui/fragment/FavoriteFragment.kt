@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salihkinali.currentnewsapp.data.local.NewsDatabase
 import com.salihkinali.currentnewsapp.databinding.FragmentFavoriteBinding
-import com.salihkinali.currentnewsapp.ui.adapter.Adapter
 import com.salihkinali.currentnewsapp.ui.adapter.FavoriteAdapter
 import com.salihkinali.currentnewsapp.ui.viewmodel.FavoriteViewModel
 import com.salihkinali.currentnewsapp.ui.viewmodel.NewViewModelFactory
@@ -41,7 +39,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupObserver() {
-        viewModel.newList.observe(viewLifecycleOwner){resources ->
+        viewModel.getList().observe(viewLifecycleOwner){resources ->
 
             when(resources.status){
                  Status.LOADING -> {

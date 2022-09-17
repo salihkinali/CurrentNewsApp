@@ -15,7 +15,7 @@ interface ArticleDao {
     @Query("SELECT * FROM news_table")
     suspend fun getAllNews(): List<ArticleRoom>
 
-    @Query("SELECT * FROM news_table WHERE  description  LIKE :content")
-    suspend fun newChecking(content:String): List<ArticleRoom>
+    @Query("SELECT * FROM news_table WHERE  description  = :content")
+    suspend fun newChecking(content:String):List<ArticleRoom>?
 
 }

@@ -42,25 +42,11 @@ class NewDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViewModel()
-        //checkedNew()
         setupUi()
 
     }
 
-    /*  private fun checkedNew() {
-          val checkNew = viewModel.isFavorite(article.title)
-          if(checkNew){
-              activeNew()
-              isActiveFavorite = false
-          }
-          else{
-             deactiveNew()
-              isActiveFavorite = true
-          }
-
-      }*/
-
-    private fun deactiveNew() {
+    private fun deactivateNew() {
         binding.addFavorite.setBackgroundColor(
             ContextCompat.getColor(
                 binding.addFavorite.context,
@@ -99,6 +85,10 @@ class NewDetailFragment : Fragment() {
                 val action = NewDetailFragmentDirections.newDetailToWebViewFragment(article.url)
                 findNavController().navigate(action)
             }
+            val checkedNew = viewModel.isFavorite(article.title)
+
+            if (checkedNew) activeNew() else deactivateNew()
+
             addFavorite.setOnClickListener { favorite() }
         }
     }
@@ -107,7 +97,7 @@ class NewDetailFragment : Fragment() {
         if (isActiveFavorite) {
             isActiveFavorite = false
             viewModel.deleteNew(article.title)
-            deactiveNew()
+            deactivateNew()
         } else {
             isActiveFavorite = true
             val articleRoom = ArticleRoom(
