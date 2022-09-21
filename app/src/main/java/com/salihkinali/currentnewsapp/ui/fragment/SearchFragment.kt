@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.salihkinali.currentnewsapp.databinding.FragmentSearchBinding
-import com.salihkinali.currentnewsapp.ui.adapter.SearchAdapter
+import com.salihkinali.currentnewsapp.ui.adapter.Adapter
 import com.salihkinali.currentnewsapp.ui.viewmodel.SearchViewModel
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
@@ -23,7 +23,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: SearchViewModel
     private val adapter by lazy {
-        SearchAdapter{
+        Adapter(requireContext()){
             val action = SearchFragmentDirections.searchToNewDetailFragment(it)
             findNavController().navigate(action)
         }

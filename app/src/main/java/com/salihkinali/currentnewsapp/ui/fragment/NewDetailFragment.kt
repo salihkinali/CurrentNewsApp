@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.salihkinali.currentnewsapp.R
 import com.salihkinali.currentnewsapp.data.local.NewsDatabase
-import com.salihkinali.currentnewsapp.data.model.ArticleRoom
+import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.FragmentNewDetailBinding
 import com.salihkinali.currentnewsapp.ui.viewmodel.FavoriteViewModel
 import com.salihkinali.currentnewsapp.ui.viewmodel.NewViewModelFactory
@@ -78,16 +78,20 @@ class NewDetailFragment : Fragment() {
             descriptionText.text = article.description
             newsImage.downloadImage(article.image)
             newContext.text = article.content
-            sourceName.text = article.source.name
+            sourceName.text = article.source!!.name
             publishedTime.text = article.publishedAt
 
-            sourcePlace.setOnClickListener {
-                val action = NewDetailFragmentDirections.newDetailToWebViewFragment(article.url)
-                findNavController().navigate(action)
+            sourcePlace.setOnClickListener {view->
+                val action = article.url?.let { it ->
+                    NewDetailFragmentDirections.newDetailToWebViewFragment(it)
+                }
+                if (action != null) {
+                    findNavController().navigate(action)
+                }
             }
-            val checkedNew = viewModel.isFavorite(article.title)
+            val checkedNew = article.title?.let { viewModel.isFavorite(it) }
 
-            if (checkedNew) activeNew() else deactivateNew()
+            if (checkedNew == true) activeNew() else deactivateNew()
 
             addFavorite.setOnClickListener { favorite() }
         }
@@ -96,19 +100,24 @@ class NewDetailFragment : Fragment() {
     private fun favorite() {
         if (isActiveFavorite) {
             isActiveFavorite = false
-            viewModel.deleteNew(article.title)
+            article.title?.let { viewModel.deleteNew(it) }
             deactivateNew()
         } else {
             isActiveFavorite = true
-            val articleRoom = ArticleRoom(
-                content = article.content,
-                description = article.description,
-                image = article.image,
-                publishedAt = article.publishedAt,
-                title = article.title,
-                url = article.url
-            )
-            viewModel.insertNew(articleRoom)
+            val articleRoom = article.content?.let {
+                Article(
+                    content = it,
+                    description = article.description!!,
+                    image = article.image!!,
+                    publishedAt = article.publishedAt!!,
+                    title = article.title!!,
+                    url = article.url!!,
+                    source = article.source!!
+                )
+            }
+            if (articleRoom != null) {
+                viewModel.insertNew(articleRoom)
+            }
             activeNew()
         }
     }

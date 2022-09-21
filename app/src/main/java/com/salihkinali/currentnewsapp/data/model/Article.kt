@@ -1,22 +1,19 @@
 package com.salihkinali.currentnewsapp.data.model
 
 
-import com.google.gson.annotations.SerializedName
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
+@Entity(tableName = "news_table")
 data class Article(
-    @SerializedName("content")
-    val content: String,
-    @SerializedName("description")
-    val description: String,
-    @SerializedName("image")
-    val image: String,
-    @SerializedName("publishedAt")
-    val publishedAt: String,
-    @SerializedName("source")
-    val source: Source,
-    @SerializedName("title")
-    val title: String,
-    @SerializedName("url")
-    val url: String
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
+    val content: String?,
+    val description: String?,
+    val image: String?,
+    val publishedAt: String?,
+    val source: Source?,
+    val title: String?,
+    val url: String?
 ):Serializable

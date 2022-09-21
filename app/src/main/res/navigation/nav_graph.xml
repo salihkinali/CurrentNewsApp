@@ -22,7 +22,16 @@
         android:id="@+id/favoriteFragment"
         android:name="com.salihkinali.currentnewsapp.ui.fragment.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/favoriteFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/favorite_to_newDetailFragment"
+            app:destination="@id/newDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newDetailFragment"
         android:name="com.salihkinali.currentnewsapp.ui.fragment.NewDetailFragment"

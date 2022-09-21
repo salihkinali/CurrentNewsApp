@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.FavoriteFragment">
@@ -10,10 +11,11 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textView"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5dp"
         android:background="@color/white"
-        android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
+        android:minHeight="48dp"
         android:padding="@dimen/_10dp"
         android:text="@string/your_saved_articles"
         android:textSize="@dimen/_18sp"

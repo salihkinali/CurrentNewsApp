@@ -3,33 +3,21 @@ package com.salihkinali.currentnewsapp.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.*
 import com.salihkinali.currentnewsapp.data.local.ArticleDao
-import com.salihkinali.currentnewsapp.data.model.ArticleRoom
-import com.salihkinali.currentnewsapp.util.Status
-import com.salihkinali.currentnewsapp.utils.Resource
+import com.salihkinali.currentnewsapp.data.model.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val dao: ArticleDao) : ViewModel() {
 
-    fun getList() = liveData(Dispatchers.Main) {
-        emit(Resource(Status.LOADING,data = null, message = null))
-        try {
-            val result = dao.getAllNews()
-            emit(Resource(Status.SUCCESS,data = result, message = null))
-        }catch (e: Exception){
-            emit(Resource(Status.ERROR,data = null, message = e.toString()))
-        }
-    }
+    fun getList() = dao.getAllNews()
 
+    fun insertNew(article: Article) {
 
-    fun insertNew(articleRoom: ArticleRoom) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Main) {
             try {
-                dao.insert(articleRoom)
-
-
+                dao.insert(article)
             } catch (error: Exception) {
-                Log.e("Waiting Error Situation => ",error.toString())
+               Log.e("About Data : ",error.toString())
             }
 
         }
@@ -37,19 +25,32 @@ class FavoriteViewModel(private val dao: ArticleDao) : ViewModel() {
 
     fun deleteNew(article:String) {
         viewModelScope.launch {
-            dao.delete(article)
+            try {
+                dao.delete(article)
+            } catch (error: Exception) {
+                Log.e("About Data : ",error.toString())
+            }
         }
+
+
     }
 
     fun isFavorite(title:String): Boolean {
         var favoriteNew = false
         viewModelScope.launch {
-           val checkedNew = dao.newChecking(title)
+            val checkedNew = dao.newChecking(title)
             if (checkedNew != null) {
                 favoriteNew = checkedNew.isNotEmpty()
             }
         }
-     return favoriteNew
+        return favoriteNew
+    }
+
+    fun deleteFromFavorite(articleRoom: Article) {
+        viewModelScope.launch {
+            dao.deleteFromFavorite(articleRoom)
+            getList()
+        }
     }
 
 }
