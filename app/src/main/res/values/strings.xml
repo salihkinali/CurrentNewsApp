@@ -2,6 +2,8 @@
     <string name="app_name">Current News App</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="favorite">Favorite</string>
     <string name="setting">Setting</string>
     <string name="news_image">News Image</string>
@@ -12,4 +14,6 @@
     <string name="add_to_favorite_list">Add to Favorite</string>
     <string name="added_favorite">Added Favorite</string>
     <string name="your_saved_articles">Your Saved Articles</string>
+    <string name="not_found">The content you were looking for could not be found</string>
+    <string name="warning">!</string>
 </resources>

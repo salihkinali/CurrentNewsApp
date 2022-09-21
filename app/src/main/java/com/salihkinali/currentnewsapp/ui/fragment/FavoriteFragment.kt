@@ -1,5 +1,6 @@
 package com.salihkinali.currentnewsapp.ui.fragment
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.currentnewsapp.R
 import com.salihkinali.currentnewsapp.data.local.NewsDatabase
+import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.FragmentFavoriteBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
 import com.salihkinali.currentnewsapp.ui.viewmodel.FavoriteViewModel
 import com.salihkinali.currentnewsapp.ui.viewmodel.NewViewModelFactory
 import com.salihkinali.currentnewsapp.util.SwipeDeleteCallback
-
 import com.salihkinali.currentnewsapp.util.visible
 
 
@@ -56,18 +57,8 @@ class FavoriteFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.bindingAdapterPosition
                 val article = adapter.currentList[position]
-                viewModel.deleteFromFavorite(article)
+                alertBuilder(article)
 
-                view?.let {
-                    Snackbar.make(it, "Article deleted successfully", Snackbar.LENGTH_SHORT).apply {
-                        anchorView =
-                            viewHolder.itemView.rootView.findViewById(R.id.bottomNavigation)
-                        setAction("Undo") {
-                            viewModel.insertNew(article)
-                        }
-                        show()
-                    }
-                }
             }
         }
 
@@ -94,6 +85,31 @@ class FavoriteFragment : Fragment() {
     private fun setupViewModel() {
         val factory = database?.let { NewViewModelFactory(it.articleDao()) }
         viewModel = factory?.let { ViewModelProvider(this, it) }!![FavoriteViewModel::class.java]
+    }
+
+    private fun alertBuilder(article: Article) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Delete Article")
+        builder.setMessage("Do you want to delete article?")
+
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+            viewModel.deleteFromFavorite(article)
+
+            view?.let {
+                Snackbar.make(it, "Article deleted successfully", Snackbar.LENGTH_SHORT).apply {
+                    anchorView = it.rootView.findViewById(R.id.bottomNavigation)
+                    setAction("Undo") {
+                        viewModel.insertNew(article)
+                    }
+                    show()
+                }
+            }
+        }
+
+        builder.setNegativeButton(getString(R.string.no)) { _, _ ->
+
+        }
+        builder.show()
     }
 
 

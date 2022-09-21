@@ -1,12 +1,11 @@
 package com.salihkinali.currentnewsapp.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,26 +50,32 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupObserver() {
-       viewModel.status.observe(viewLifecycleOwner){resource ->
-           when(resource.status){
-               Status.SUCCESS -> {
-                   binding.loading.visible(false)
-                   binding.searchView.visible(true)
-                   if(resource.data != null){
-                       adapter.submitList(resource.data.articles)
-                   }else{
-                      Toast.makeText(requireContext(),"Data is Null",Toast.LENGTH_SHORT).show()
-                   }
-               }
-               Status.ERROR -> {
-                   binding.loading.visible(false)
-                   binding.searchView.visible(false)
-                   Toast.makeText(requireContext(), "There is problem from data", Toast.LENGTH_SHORT).show()
-               }
-               Status.LOADING ->{
-                   binding.loading.visible(true)
-                   binding.searchView.visible(false)
-               }
+        viewModel.status.observe(viewLifecycleOwner) {
+            when (it.status) {
+                Status.SUCCESS -> {
+                    binding.loading.visible(false)
+                    if (it.data?.totalArticles != 0) {
+                        binding.searchRecyclerView.visible(true)
+                        binding.alertSymbol.visible(false)
+                        binding.alertText.visible(false)
+                        adapter.submitList(it.data!!.articles)
+                    }else{
+                        binding.searchRecyclerView.visible(false)
+                        binding.alertSymbol.visible(true)
+                        binding.alertText.visible(true)
+                    }
+                }
+                Status.ERROR -> {
+                    binding.loading.visible(false)
+                    binding.alertSymbol.visible(false)
+                    binding.alertText.visible(false)
+                }
+                Status.LOADING -> {
+                    binding.loading.visible(true)
+                    binding.alertSymbol.visible(false)
+                    binding.alertText.visible(false)
+
+                }
            }
 
        }

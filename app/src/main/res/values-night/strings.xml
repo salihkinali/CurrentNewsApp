@@ -2,4 +2,5 @@
 <resources>
     <string name="setting">Setting</string>
     <string name="your_saved_articles">Your Saved Articles</string>
+    <string name="not_found">The content you were looking for could not be found</string>
 </resources>
