@@ -13,6 +13,7 @@
         android:icon="@drawable/favorite_icon"
         android:id="@+id/favoriteFragment"/>
     <item android:title="@string/setting"
+        android:id="@+id/settingFragment"
           android:icon="@drawable/setting_icon"
         app:showAsAction="never"/>
 </menu>

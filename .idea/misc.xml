@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/bookmark_icon.xml" value="0.1575" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/bottom_navigation.xml" value="0.1575" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/color.xml" value="0.1575" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/favorite_icon.xml" value="0.158" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/home_icon.xml" value="0.1575" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1575" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1575" />
@@ -14,14 +15,17 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/material_background_color.xml" value="0.1575" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/not_found.xml" value="0.158" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/search_background.xml" value="0.1575" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/search_icon.xml" value="0.158" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/setting_icon.xml" value="0.104" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/drawable/splash_screen.xml" value="0.1575" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/font/days_one.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.1734375" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_favorite.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_home.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_new_detail.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_search.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_setting.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/fragment_web_view.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/header_item.xml" value="0.23125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/CurrentNewsApp/app/src/main/res/layout/header_title.xml" value="0.23125" />

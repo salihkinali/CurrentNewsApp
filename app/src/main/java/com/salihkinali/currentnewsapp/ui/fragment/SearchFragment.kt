@@ -74,6 +74,7 @@ class SearchFragment : Fragment() {
                     binding.loading.visible(true)
                     binding.alertSymbol.visible(false)
                     binding.alertText.visible(false)
+                    binding.searchRecyclerView.visible(false)
 
                 }
            }
