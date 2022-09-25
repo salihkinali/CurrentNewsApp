@@ -3,25 +3,43 @@ package com.salihkinali.currentnewsapp.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.salihkinali.currentnewsapp.R
 import com.salihkinali.currentnewsapp.databinding.ActivityMainBinding
 import com.salihkinali.currentnewsapp.util.visible
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_CurrentNewsApp)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        setSupportActionBar(binding.materialToolbar)
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navController = navHostFragment.navController
 
-        NavigationUI.setupWithNavController(binding.bottomNavigation, navHostFragment.navController)
+        binding.bottomNavigation.setupWithNavController(navHostFragment.navController)
 
+        // Setup the ActionBar with navController and 4 top level destinations
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.searchingFragment,
+                R.id.favoriteFragment,
+                R.id.settingFragment
+            )
+        )
+        setupActionBarWithNavController(navHostFragment.navController, appBarConfiguration)
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -40,7 +58,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        setContentView(binding.root)
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
     }
 
     private fun hideBottomNavigation() {
