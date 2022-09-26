@@ -92,8 +92,10 @@ class NewDetailFragment : Fragment() {
             newContext.text = article.content
             sourceName.text = article.source!!.name
             publishedTime.text = article.publishedAt
+            isActiveFavorite = args.isFavorite
 
-            sourcePlace.setOnClickListener {_->
+
+            sourcePlace.setOnClickListener { _ ->
                 val action = article.url?.let { it ->
                     NewDetailFragmentDirections.newDetailToWebViewFragment(it)
                 }
@@ -101,11 +103,16 @@ class NewDetailFragment : Fragment() {
                     findNavController().navigate(action)
                 }
             }
-            val checkedNew = article.title?.let { viewModel.isFavorite(it) }
 
-            if (checkedNew == true) activeNew() else deactivateNew()
+            if (isActiveFavorite) {
+                activeNew()
+            } else {
+                deactivateNew()
+            }
+            binding.addFavorite.setOnClickListener {
+                favorite()
+            }
 
-            addFavorite.setOnClickListener { favorite() }
         }
     }
 

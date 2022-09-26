@@ -14,7 +14,7 @@ class MainRepository(private val apiHelper: ApiHelper,private val dao: ArticleDa
     fun getList() = dao.getAllNews()
     suspend fun insert(article: Article) = dao.insert(article)
     suspend fun delete(article: String) = dao.delete(article)
-    suspend fun newChecking(title: String) = dao.newChecking(title)
+    suspend fun newChecking(id: Int) = dao.newChecking(id)
     suspend fun deleteFromFavorite(articleRoom: Article) = dao.deleteFromFavorite(articleRoom)
 
 

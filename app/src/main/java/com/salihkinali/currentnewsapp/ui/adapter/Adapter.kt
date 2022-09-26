@@ -1,21 +1,27 @@
 package com.salihkinali.currentnewsapp.ui.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.salihkinali.currentnewsapp.data.model.Article
-import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.databinding.NewsCardDesignBinding
 import com.salihkinali.currentnewsapp.util.downloadImage
 
 class Adapter(private val context: Context,private val itemClick: (Article) -> Unit):ListAdapter<Article,Adapter.ViewHolder>(DiffUtilCallBack){
-    class ViewHolder(val cardDesignBinding: NewsCardDesignBinding):
-        RecyclerView.ViewHolder(cardDesignBinding.root)
+    class ViewHolder(val cardDesignBinding: NewsCardDesignBinding) :
+        RecyclerView.ViewHolder(cardDesignBinding.root) {
+
+        fun bind(item: Article) {
+            cardDesignBinding.apply {
+                titleText.text = item.title
+                shapeableImageView.downloadImage(item.image)
+                publishedTime.text = item.publishedAt
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
        val cardDesignBinding = NewsCardDesignBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -23,15 +29,12 @@ class Adapter(private val context: Context,private val itemClick: (Article) -> U
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val item = getItem(position)
-        holder.cardDesignBinding.apply {
-            titleText.text = item.title
-            shapeableImageView.downloadImage(item.image)
-            publishedTime.text = item.publishedAt
-            root.setOnClickListener {
-                itemClick.invoke(item)
-            }
+        val item = getItem(position)
+        holder.bind(item)
+        holder.cardDesignBinding.root.setOnClickListener {
+            itemClick.invoke(item)
         }
+
     }
     companion object DiffUtilCallBack : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {

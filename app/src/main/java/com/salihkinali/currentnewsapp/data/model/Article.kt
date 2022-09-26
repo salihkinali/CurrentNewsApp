@@ -8,7 +8,7 @@ import java.io.Serializable
 @Entity(tableName = "news_table")
 data class Article(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    val id: Int = 0,
     val content: String?,
     val description: String?,
     val image: String?,

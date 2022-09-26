@@ -35,15 +35,13 @@ class FavoriteViewModel(private val mainRepository: MainRepository) : ViewModel(
 
     }
 
-    fun isFavorite(title:String): Boolean {
-        var favoriteNew = false
+    fun isFavorite(id:Int): List<Article>? {
+        var temp:List<Article>? = null
         viewModelScope.launch {
-            val checkedNew = mainRepository.newChecking(title)
-            if (checkedNew != null) {
-                favoriteNew = checkedNew.isNotEmpty()
-            }
+            temp = mainRepository.newChecking(id)
+
         }
-        return favoriteNew
+        return temp
     }
 
     fun deleteFromFavorite(articleRoom: Article) {
@@ -55,12 +53,3 @@ class FavoriteViewModel(private val mainRepository: MainRepository) : ViewModel(
 
 }
 
-/*class FavoriteViewModelFactory(private val dao: ArticleDao) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return FavoriteViewModel(dao) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}*/

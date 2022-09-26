@@ -23,11 +23,8 @@
         android:name="com.salihkinali.currentnewsapp.ui.fragment.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
-        <action
-            android:id="@+id/action_favoriteFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/favoriteFragment"
-            app:popUpToInclusive="true" />
+
+        <!--suppress AndroidElementNotAllowed -->
         <action
             android:id="@+id/favorite_to_newDetailFragment"
             app:destination="@id/newDetailFragment"
@@ -51,6 +48,10 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="isFavorite"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/searchingFragment"

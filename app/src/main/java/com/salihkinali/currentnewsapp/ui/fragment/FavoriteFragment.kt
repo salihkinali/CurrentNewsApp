@@ -34,7 +34,7 @@ class FavoriteFragment : Fragment() {
     private lateinit var dao: ArticleDao
     private lateinit var mainRepository: MainRepository
     private val adapter by lazy { Adapter(requireContext()) {
-        val action = FavoriteFragmentDirections.favoriteToNewDetailFragment(it)
+        val action = FavoriteFragmentDirections.favoriteToNewDetailFragment(it,true)
         findNavController().navigate(action)
     }
     }

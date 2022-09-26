@@ -16,8 +16,8 @@ interface ArticleDao {
     @Query("SELECT * FROM news_table")
     fun getAllNews(): LiveData<List<Article>>
 
-    @Query("SELECT * FROM news_table WHERE  description  = :content")
-    suspend fun newChecking(content:String):List<Article>?
+    @Query("SELECT * FROM news_table WHERE  id IN (:id)")
+    suspend fun newChecking(id:Int):List<Article>?
 
     @Delete
     suspend fun deleteFromFavorite(articleRoom: Article)

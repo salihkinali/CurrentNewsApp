@@ -2,7 +2,6 @@ package com.salihkinali.currentnewsapp.data.service
 
 import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.util.API_KEY
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
