@@ -12,11 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.currentnewsapp.R
+import com.salihkinali.currentnewsapp.data.local.ArticleDao
 import com.salihkinali.currentnewsapp.data.local.NewsDatabase
+import com.salihkinali.currentnewsapp.data.repository.MainRepository
+import com.salihkinali.currentnewsapp.data.service.ApiHelper
+import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentFavoriteBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
 import com.salihkinali.currentnewsapp.ui.viewmodel.FavoriteViewModel
-import com.salihkinali.currentnewsapp.ui.viewmodel.NewViewModelFactory
+import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModelFactory
 import com.salihkinali.currentnewsapp.util.SwipeDeleteCallback
 import com.salihkinali.currentnewsapp.util.visible
 
@@ -25,11 +29,18 @@ import com.salihkinali.currentnewsapp.util.visible
 class FavoriteFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteBinding
     private lateinit var viewModel: FavoriteViewModel
+    private lateinit var factory:NewsViewModelFactory
     private val database by lazy { context?.let { NewsDatabase.getDatabase(it.applicationContext) }}
+    private lateinit var dao: ArticleDao
+    private lateinit var mainRepository: MainRepository
     private val adapter by lazy { Adapter(requireContext()) {
         val action = FavoriteFragmentDirections.favoriteToNewDetailFragment(it)
         findNavController().navigate(action)
     }
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        dao = database?.articleDao()!!
     }
 
 
@@ -88,8 +99,9 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        val factory = database?.let { NewViewModelFactory(it.articleDao()) }
-        viewModel = factory?.let { ViewModelProvider(this, it) }!![FavoriteViewModel::class.java]
+        mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService), dao)
+        factory = NewsViewModelFactory(mainRepository)
+        viewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
     }
 
 }

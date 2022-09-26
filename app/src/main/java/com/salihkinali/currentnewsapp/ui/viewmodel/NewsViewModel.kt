@@ -1,22 +1,17 @@
 package com.salihkinali.currentnewsapp.ui.viewmodel
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.data.repository.MainRepository
-import com.salihkinali.currentnewsapp.data.service.ApiHelper
-import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class NewsViewModel : ViewModel() {
+class NewsViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
+   // private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
     private var _responseNews = MutableLiveData<Resource<News>>()
     val responseNews: LiveData<Resource<News>> get() = _responseNews
 
@@ -37,3 +32,4 @@ class NewsViewModel : ViewModel() {
     }
 
 }
+

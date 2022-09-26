@@ -9,9 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.salihkinali.currentnewsapp.data.local.ArticleDao
+import com.salihkinali.currentnewsapp.data.local.NewsDatabase
+import com.salihkinali.currentnewsapp.data.repository.MainRepository
+import com.salihkinali.currentnewsapp.data.service.ApiHelper
+import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentHomeBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
 import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModel
+import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModelFactory
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
 
@@ -20,11 +26,21 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: NewsViewModel
+    private lateinit var factory: NewsViewModelFactory
+    private val database by lazy { context?.let { NewsDatabase.getDatabase(it.applicationContext) } }
+    private lateinit var dao: ArticleDao
+    private lateinit var mainRepository: MainRepository
+
     private val adapter by lazy {
         Adapter(requireContext()) { article ->
             val action = HomeFragmentDirections.homeToDetailFragment(article)
             findNavController().navigate(action)
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        dao = database?.articleDao()!!
     }
 
     override fun onCreateView(
@@ -68,7 +84,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
+        mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService), dao)
+        factory = NewsViewModelFactory(mainRepository)
+        viewModel = ViewModelProvider(this, factory)[NewsViewModel::class.java]
     }
 
     private fun setupUI() {

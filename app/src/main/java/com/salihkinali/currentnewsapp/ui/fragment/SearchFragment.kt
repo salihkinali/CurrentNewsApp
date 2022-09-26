@@ -9,8 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.salihkinali.currentnewsapp.data.local.ArticleDao
+import com.salihkinali.currentnewsapp.data.local.NewsDatabase
+import com.salihkinali.currentnewsapp.data.repository.MainRepository
+import com.salihkinali.currentnewsapp.data.service.ApiHelper
+import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentSearchBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
+import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModelFactory
 import com.salihkinali.currentnewsapp.ui.viewmodel.SearchViewModel
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
@@ -21,11 +27,19 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: SearchViewModel
+    private lateinit var factory: NewsViewModelFactory
+    private val database by lazy { context?.let { NewsDatabase.getDatabase(it.applicationContext) } }
+    private lateinit var dao: ArticleDao
+    private lateinit var mainRepository: MainRepository
     private val adapter by lazy {
         Adapter(requireContext()){
             val action = SearchFragmentDirections.searchToNewDetailFragment(it)
             findNavController().navigate(action)
         }
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        dao = database?.articleDao()!!
     }
 
     override fun onCreateView(
@@ -33,15 +47,21 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getResultFilter()
+        setupViewModel()
         setupObserver()
         setupUi()
+    }
+
+    private fun setupViewModel() {
+        mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService), dao)
+        factory = NewsViewModelFactory(mainRepository)
+        viewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
     }
 
     private fun setupUi() {

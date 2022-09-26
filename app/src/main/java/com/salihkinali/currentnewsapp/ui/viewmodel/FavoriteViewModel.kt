@@ -2,20 +2,20 @@ package com.salihkinali.currentnewsapp.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.salihkinali.currentnewsapp.data.local.ArticleDao
 import com.salihkinali.currentnewsapp.data.model.Article
+import com.salihkinali.currentnewsapp.data.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FavoriteViewModel(private val dao: ArticleDao) : ViewModel() {
+class FavoriteViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    fun getList() = dao.getAllNews()
+    fun getList() = mainRepository.getList()
 
     fun insertNew(article: Article) {
 
         viewModelScope.launch(Dispatchers.Main) {
             try {
-                dao.insert(article)
+                mainRepository.insert(article)
             } catch (error: Exception) {
                Log.e("About Data : ",error.toString())
             }
@@ -26,7 +26,7 @@ class FavoriteViewModel(private val dao: ArticleDao) : ViewModel() {
     fun deleteNew(article:String) {
         viewModelScope.launch {
             try {
-                dao.delete(article)
+               mainRepository.delete(article)
             } catch (error: Exception) {
                 Log.e("About Data : ",error.toString())
             }
@@ -38,7 +38,7 @@ class FavoriteViewModel(private val dao: ArticleDao) : ViewModel() {
     fun isFavorite(title:String): Boolean {
         var favoriteNew = false
         viewModelScope.launch {
-            val checkedNew = dao.newChecking(title)
+            val checkedNew = mainRepository.newChecking(title)
             if (checkedNew != null) {
                 favoriteNew = checkedNew.isNotEmpty()
             }
@@ -48,14 +48,14 @@ class FavoriteViewModel(private val dao: ArticleDao) : ViewModel() {
 
     fun deleteFromFavorite(articleRoom: Article) {
         viewModelScope.launch {
-            dao.deleteFromFavorite(articleRoom)
+           mainRepository.deleteFromFavorite(articleRoom)
             getList()
         }
     }
 
 }
 
-class NewViewModelFactory(private val dao: ArticleDao) : ViewModelProvider.Factory {
+/*class FavoriteViewModelFactory(private val dao: ArticleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
@@ -63,4 +63,4 @@ class NewViewModelFactory(private val dao: ArticleDao) : ViewModelProvider.Facto
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-}
+}*/
