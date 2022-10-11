@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/feedback">
+        <Preference
+            app:icon="@drawable/ic_feed"
+            app:key="send_feedback"
+            app:title="@string/send_feedback" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/development">
+        <Preference
+            app:icon="@drawable/ic_person"
+            app:key="developer"
+            app:title="@string/developer" />
+        <Preference
+            app:icon="@drawable/ic_source"
+            app:key="source_code"
+            app:title="@string/go_to_source" />
+    </PreferenceCategory>
+</PreferenceScreen>
