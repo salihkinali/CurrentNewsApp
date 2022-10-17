@@ -87,6 +87,8 @@
         tools:layout="@layout/fragment_onboarding" >
         <action
             android:id="@+id/onboarding_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
