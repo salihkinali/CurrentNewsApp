@@ -1,9 +1,10 @@
-package com.salihkinali.currentnewsapp.ui.fragment
+package com.salihkinali.currentnewsapp.ui.fragment.setting
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.salihkinali.currentnewsapp.R
@@ -22,19 +23,35 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun initView() {
         findPreference<Preference>("developer")?.onPreferenceClickListener =
             Preference.OnPreferenceClickListener {
-                openView("https://twitter.com/S_kinali")
+                openView(getString(R.string.developer_adress))
                 true
             }
         findPreference<Preference>("source_code")?.onPreferenceClickListener =
             Preference.OnPreferenceClickListener {
-                openView("https://github.com/salihkinali/CurrentNewsApp")
+                openView(getString(R.string.githup_adress))
                 true
             }
         findPreference<Preference>("send_feedback")?.onPreferenceClickListener =
             Preference.OnPreferenceClickListener {
-                openView("https://docs.google.com/forms/d/1GOUNwV12H3QDjhM26GSZRQbhV-mOXvUTbOyVlPGWOB0/")
+                openView(getString(R.string.feedback_adress))
                 true
             }
+        findPreference<Preference>("share")?.onPreferenceClickListener =
+            Preference.OnPreferenceClickListener {
+                shareCode(getString(R.string.githup_adress))
+                true
+            }
+    }
+
+    private fun shareCode(share: String) {
+
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, share)
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
 
     }
 

@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/onboardingFragment">
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.salihkinali.currentnewsapp.ui.fragment.HomeFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.salihkinali.currentnewsapp.ui.fragment.FavoriteFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
 
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/newDetailFragment"
-        android:name="com.salihkinali.currentnewsapp.ui.fragment.NewDetailFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.detail.NewDetailFragment"
         android:label="fragment_new_detail"
         tools:layout="@layout/fragment_new_detail" >
         <argument
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchingFragment"
-        android:name="com.salihkinali.currentnewsapp.ui.fragment.SearchFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.salihkinali.currentnewsapp.ui.fragment.WebViewFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.webview.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" >
         <argument
@@ -77,7 +77,16 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.salihkinali.currentnewsapp.ui.fragment.SettingFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.setting.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.salihkinali.currentnewsapp.ui.fragment.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/onboarding_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

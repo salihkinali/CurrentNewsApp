@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment
+package com.salihkinali.currentnewsapp.ui.fragment.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,8 +16,8 @@ import com.salihkinali.currentnewsapp.data.service.ApiHelper
 import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentHomeBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
-import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModel
-import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModelFactory
+import com.salihkinali.currentnewsapp.ui.adapter.technology.TechAdapter
+import com.salihkinali.currentnewsapp.ui.fragment.factory.NewsViewModelFactory
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
 
@@ -30,9 +30,13 @@ class HomeFragment : Fragment() {
     private val database by lazy { context?.let { NewsDatabase.getDatabase(it.applicationContext) } }
     private lateinit var dao: ArticleDao
     private lateinit var mainRepository: MainRepository
-
+    private val techAdapter by lazy { TechAdapter {
+        val action = HomeFragmentDirections.homeToDetailFragment(it)
+        findNavController().navigate(action)
+    }
+    }
     private val adapter by lazy {
-        Adapter(requireContext()) { article ->
+        Adapter { article ->
             val action = HomeFragmentDirections.homeToDetailFragment(article)
             findNavController().navigate(action)
         }
@@ -64,19 +68,22 @@ class HomeFragment : Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        binding.recylerView.visible(true)
                         binding.progressBar.visible(false)
-                        resource.data?.let { adapter.submitList(it.articles) }
+                        binding.breakingNews.visible(true)
+                        binding.technologyNews.visible(true)
+
+                        resource.data?.let { adapter.submitList(it[0].articles)}
+                        techAdapter.submitList(resource.data?.get(1)?.articles)
                     }
                     Status.ERROR -> {
-                        binding.recylerView.visible(true)
                         binding.progressBar.visible(false)
                         Toast.makeText(requireActivity(), resource.message, Toast.LENGTH_SHORT)
                             .show()
                     }
                     Status.LOADING -> {
-                        binding.recylerView.visible(false)
                         binding.progressBar.visible(true)
+                        binding.breakingNews.visible(false)
+                        binding.technologyNews.visible(false)
                     }
                 }
             }
@@ -90,8 +97,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupUI() {
-        binding.recylerView.layoutManager = LinearLayoutManager(activity)
-        binding.recylerView.adapter = adapter
+        binding.rvBreaking.layoutManager = LinearLayoutManager(activity)
+        binding.rvBreaking.adapter = adapter
+
+        binding.rvTechnology.adapter = techAdapter
+        binding.rvTechnology.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
     }
 
     override fun onDestroyView() {

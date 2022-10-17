@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment
+package com.salihkinali.currentnewsapp.ui.fragment.webview
 
 import android.annotation.SuppressLint
 import android.os.Bundle

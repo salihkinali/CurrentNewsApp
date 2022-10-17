@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment
+package com.salihkinali.currentnewsapp.ui.fragment.detail
 
 
 import android.os.Bundle
@@ -18,8 +18,8 @@ import com.salihkinali.currentnewsapp.data.repository.MainRepository
 import com.salihkinali.currentnewsapp.data.service.ApiHelper
 import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentNewDetailBinding
-import com.salihkinali.currentnewsapp.ui.viewmodel.FavoriteViewModel
-import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModelFactory
+import com.salihkinali.currentnewsapp.ui.fragment.favorite.FavoriteViewModel
+import com.salihkinali.currentnewsapp.ui.fragment.factory.NewsViewModelFactory
 import com.salihkinali.currentnewsapp.util.downloadImage
 
 
@@ -91,7 +91,7 @@ class NewDetailFragment : Fragment() {
             newsImage.downloadImage(article.image)
             newContext.text = article.content
             sourceName.text = article.source!!.name
-            publishedTime.text = article.publishedAt
+            publishedTime.text = article.publishedAt?.let { timeConversion(it) }
             isActiveFavorite = args.isFavorite
 
 
@@ -114,6 +114,12 @@ class NewDetailFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun timeConversion(s: String): String {
+        val getDate = s.substring(0, 10)
+        val getTime = s.substring(11, 16)
+        return "Publish Time: $getDate / $getTime"
     }
 
     private fun favorite() {
@@ -141,3 +147,4 @@ class NewDetailFragment : Fragment() {
         }
     }
 }
+

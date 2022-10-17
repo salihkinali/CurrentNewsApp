@@ -1,8 +1,11 @@
-package com.salihkinali.currentnewsapp.ui.viewmodel
+package com.salihkinali.currentnewsapp.ui.fragment.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.salihkinali.currentnewsapp.data.repository.MainRepository
+import com.salihkinali.currentnewsapp.ui.fragment.favorite.FavoriteViewModel
+import com.salihkinali.currentnewsapp.ui.fragment.home.NewsViewModel
+import com.salihkinali.currentnewsapp.ui.fragment.search.SearchViewModel
 
 class NewsViewModelFactory(private val mainRepository: MainRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

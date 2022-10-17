@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
                     hideBottomNavigation()
                     binding.materialToolbar.title = "WebView Screen"
                 }
+                R.id.onboardingFragment -> {
+                    hideBottomNavigation()
+                }
 
                 else -> {
                     showBottomNavigation()

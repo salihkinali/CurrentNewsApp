@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.viewmodel
+package com.salihkinali.currentnewsapp.ui.fragment.search
 
 import androidx.lifecycle.*
 import com.salihkinali.currentnewsapp.data.model.News

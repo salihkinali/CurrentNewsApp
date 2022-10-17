@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.viewmodel
+package com.salihkinali.currentnewsapp.ui.fragment.favorite
 
 import android.util.Log
 import androidx.lifecycle.*
@@ -31,17 +31,6 @@ class FavoriteViewModel(private val mainRepository: MainRepository) : ViewModel(
                 Log.e("About Data : ",error.toString())
             }
         }
-
-
-    }
-
-    fun isFavorite(id:Int): List<Article>? {
-        var temp:List<Article>? = null
-        viewModelScope.launch {
-            temp = mainRepository.newChecking(id)
-
-        }
-        return temp
     }
 
     fun deleteFromFavorite(articleRoom: Article) {

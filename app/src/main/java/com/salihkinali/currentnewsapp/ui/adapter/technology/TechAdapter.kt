@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.adapter
+package com.salihkinali.currentnewsapp.ui.adapter.technology
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,39 +6,31 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.currentnewsapp.data.model.Article
-import com.salihkinali.currentnewsapp.databinding.NewsCardDesignBinding
+import com.salihkinali.currentnewsapp.databinding.ItemHorizontalDesignBinding
 import com.salihkinali.currentnewsapp.util.downloadImage
 
-class Adapter(private val itemClick: (Article) -> Unit):ListAdapter<Article,Adapter.ViewHolder>(DiffUtilCallBack){
-    class ViewHolder(val cardDesignBinding: NewsCardDesignBinding) :
-        RecyclerView.ViewHolder(cardDesignBinding.root) {
+class TechAdapter(private val itemClick: (Article) -> Unit):ListAdapter<Article,TechAdapter.ViewHolder>(DiffUtilCallBack){
+    class ViewHolder(val binding: ItemHorizontalDesignBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Article) {
-            cardDesignBinding.apply {
-                titleText.text = item.title
-                shapeableImageView.downloadImage(item.image)
-                publishedTime.text = item.publishedAt?.let { timeConversion(it) }
+            binding.apply {
+                newsImage.downloadImage(item.image)
             }
-        }
-        private fun timeConversion(s: String): String {
-            val getDate = s.substring(0, 10)
-            val getTime = s.substring(11, 16)
-            return "Publish Time: $getDate / $getTime"
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-       val cardDesignBinding = NewsCardDesignBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ViewHolder(cardDesignBinding)
+        val itemHorizontalDesignBinding = ItemHorizontalDesignBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return ViewHolder(itemHorizontalDesignBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
-        holder.cardDesignBinding.root.setOnClickListener {
+        holder.binding.root.setOnClickListener{
             itemClick.invoke(item)
         }
-
     }
     companion object DiffUtilCallBack : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {

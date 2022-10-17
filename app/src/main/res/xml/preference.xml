@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <PreferenceCategory app:title="General">
+        <Preference
+            app:key="share"
+            app:title="@string/share_friend"
+            app:icon="@drawable/ic_share"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/feedback">
         <Preference
             app:icon="@drawable/ic_feed"
@@ -19,4 +27,5 @@
             app:key="source_code"
             app:title="@string/go_to_source" />
     </PreferenceCategory>
+
 </PreferenceScreen>

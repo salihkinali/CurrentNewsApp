@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.WebViewFragment">
+    tools:context=".ui.fragment.webview.WebViewFragment">
 
     <WebView
         android:id="@+id/webViewScreen"

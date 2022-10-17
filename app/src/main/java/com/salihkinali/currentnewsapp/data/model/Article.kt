@@ -1,11 +1,13 @@
 package com.salihkinali.currentnewsapp.data.model
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.io.Serializable
+import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "news_table")
+@Parcelize
 data class Article(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
@@ -16,4 +18,4 @@ data class Article(
     val source: Source?,
     val title: String?,
     val url: String?
-):Serializable
+):Parcelable

@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment
+package com.salihkinali.currentnewsapp.ui.fragment.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,8 +16,7 @@ import com.salihkinali.currentnewsapp.data.service.ApiHelper
 import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentSearchBinding
 import com.salihkinali.currentnewsapp.ui.adapter.Adapter
-import com.salihkinali.currentnewsapp.ui.viewmodel.NewsViewModelFactory
-import com.salihkinali.currentnewsapp.ui.viewmodel.SearchViewModel
+import com.salihkinali.currentnewsapp.ui.fragment.factory.NewsViewModelFactory
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
 
@@ -32,7 +31,7 @@ class SearchFragment : Fragment() {
     private lateinit var dao: ArticleDao
     private lateinit var mainRepository: MainRepository
     private val adapter by lazy {
-        Adapter(requireContext()){
+        Adapter{
             val action = SearchFragmentDirections.searchToNewDetailFragment(it)
             findNavController().navigate(action)
         }
