@@ -27,6 +27,7 @@
 - [Picasso](https://square.github.io/picasso/) An image loading library for Android backed by Kotlin Coroutines
 - Material Design
 
+
 ## Package Structure
 
     com.salihkinali.currentnewsapp  # Root Package
