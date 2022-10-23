@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment.setting
+package com.salihkinali.currentnewsapp.ui.setting
 
 import android.content.Intent
 import android.net.Uri

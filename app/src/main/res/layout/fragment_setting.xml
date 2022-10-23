@@ -7,6 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="@dimen/_5dp"
-    tools:context=".ui.fragment.setting.SettingFragment">
+    tools:context=".ui.setting.SettingFragment">
 
 </LinearLayout>

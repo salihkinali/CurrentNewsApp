@@ -28,6 +28,7 @@
     <string name="news_search">SEARCH NEWS IN THE WORLD</string>
     <string name="news_find">FIND NEWS ANY WHERE THEY</string>
     <string name="news_connect">TAKE INFORMATION IN OTHER PEOPLE</string>
+    <string name="deleted_article">Article deleted successfully</string>
     <string name="githup_adress">https://github.com/salihkinali/CurrentNewsApp</string>
     <string name="feedback_adress">https://docs.google.com/forms/d/1GOUNwV12H3QDjhM26GSZRQbhV-mOXvUTbOyVlPGWOB0/</string>
     <string name="developer_adress">https://twitter.com/S_kinali</string>

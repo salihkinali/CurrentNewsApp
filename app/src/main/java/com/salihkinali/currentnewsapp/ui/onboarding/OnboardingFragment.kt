@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment.onboarding
+package com.salihkinali.currentnewsapp.ui.onboarding
 
 import android.content.Context
 import android.os.Bundle

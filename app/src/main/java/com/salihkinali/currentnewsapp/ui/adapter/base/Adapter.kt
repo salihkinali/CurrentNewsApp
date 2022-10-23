@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.adapter
+package com.salihkinali.currentnewsapp.ui.adapter.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,9 @@ import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.NewsCardDesignBinding
 import com.salihkinali.currentnewsapp.util.downloadImage
 
-class Adapter(private val itemClick: (Article) -> Unit):ListAdapter<Article,Adapter.ViewHolder>(DiffUtilCallBack){
+class Adapter(private val itemClick: (Article) -> Unit):ListAdapter<Article, Adapter.ViewHolder>(
+    DiffUtilCallBack
+){
     class ViewHolder(val cardDesignBinding: NewsCardDesignBinding) :
         RecyclerView.ViewHolder(cardDesignBinding.root) {
 

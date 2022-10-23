@@ -1,18 +1,20 @@
-package com.salihkinali.currentnewsapp.ui.fragment.home
+package com.salihkinali.currentnewsapp.ui.home
 
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.data.repository.MainRepository
 import com.salihkinali.currentnewsapp.util.BREAKING_NEWS
 import com.salihkinali.currentnewsapp.util.TECHNOLOGY_NEWS
 import com.salihkinali.currentnewsapp.utils.Resource
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class NewsViewModel(private val mainRepository: MainRepository) : ViewModel() {
+@HiltViewModel
+class NewsViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
 
    // private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
     private var _responseNews = MutableLiveData<Resource<MutableList<News>>>()
@@ -20,13 +22,14 @@ class NewsViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     init {
         getNews()
+        Log.e("İnit Blok","Init bloğu bir kez çalıştı.")
     }
 
     private fun getNews() {
         _responseNews.postValue(Resource.loading(data = null))
-        viewModelScope.launch(Dispatchers.IO) {
+        val results = mutableListOf <News>()
+     viewModelScope.launch {
             try {
-                val results = mutableListOf <News>()
                 val breaking = mainRepository.getNews(topic = BREAKING_NEWS)
                 delay(1000)
                 val technology = mainRepository.getNews(topic = TECHNOLOGY_NEWS)
@@ -38,6 +41,5 @@ class NewsViewModel(private val mainRepository: MainRepository) : ViewModel() {
             }
         }
     }
-
 }
 

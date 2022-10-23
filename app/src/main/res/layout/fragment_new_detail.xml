@@ -7,7 +7,7 @@
     android:layout_margin="10dp"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.fragment.detail.NewDetailFragment">
+    tools:context=".ui.detail.NewDetailFragment">
 
     <ScrollView
         android:layout_width="match_parent"

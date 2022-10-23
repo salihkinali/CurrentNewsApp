@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.fragment.detail
+package com.salihkinali.currentnewsapp.ui.detail
 
 
 import android.os.Bundle
@@ -7,22 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.salihkinali.currentnewsapp.R
-import com.salihkinali.currentnewsapp.data.local.ArticleDao
-import com.salihkinali.currentnewsapp.data.local.NewsDatabase
 import com.salihkinali.currentnewsapp.data.model.Article
-import com.salihkinali.currentnewsapp.data.repository.MainRepository
-import com.salihkinali.currentnewsapp.data.service.ApiHelper
-import com.salihkinali.currentnewsapp.data.service.RetrofitBuilder
 import com.salihkinali.currentnewsapp.databinding.FragmentNewDetailBinding
-import com.salihkinali.currentnewsapp.ui.fragment.favorite.FavoriteViewModel
-import com.salihkinali.currentnewsapp.ui.fragment.factory.NewsViewModelFactory
+import com.salihkinali.currentnewsapp.ui.favorite.FavoriteViewModel
 import com.salihkinali.currentnewsapp.util.downloadImage
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class NewDetailFragment : Fragment() {
 
     private var _binding: FragmentNewDetailBinding? = null
@@ -30,16 +25,7 @@ class NewDetailFragment : Fragment() {
     private val args: NewDetailFragmentArgs by navArgs()
     private val article by lazy { args.article }
     private var isActiveFavorite = false
-    private lateinit var factory: NewsViewModelFactory
-    private val database by lazy { context?.let { NewsDatabase.getDatabase(it.applicationContext) } }
-    private lateinit var dao: ArticleDao
-    private lateinit var mainRepository: MainRepository
-    private lateinit var viewModel: FavoriteViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        dao = database?.articleDao()!!
-    }
+    private val viewModel: FavoriteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,9 +38,7 @@ class NewDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModel()
         setupUi()
-
     }
 
     private fun deactivateNew() {
@@ -78,11 +62,6 @@ class NewDetailFragment : Fragment() {
         isActiveFavorite = true
     }
 
-    private fun setupViewModel() {
-        mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService), dao)
-        factory = NewsViewModelFactory(mainRepository)
-        viewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
-    }
 
     private fun setupUi() {
 

@@ -1,16 +1,18 @@
-package com.salihkinali.currentnewsapp.ui.fragment.search
+package com.salihkinali.currentnewsapp.ui.search
 
 import androidx.lifecycle.*
 import com.salihkinali.currentnewsapp.data.model.News
 import com.salihkinali.currentnewsapp.data.repository.MainRepository
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class SearchViewModel(private val mainRepository: MainRepository) : ViewModel() {
+@HiltViewModel
+class SearchViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
 
     private var _status = MutableLiveData<Resource<News>>()
     val status: LiveData<Resource<News>> get() = _status

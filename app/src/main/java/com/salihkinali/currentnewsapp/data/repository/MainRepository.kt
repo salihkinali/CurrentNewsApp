@@ -3,8 +3,9 @@ package com.salihkinali.currentnewsapp.data.repository
 import com.salihkinali.currentnewsapp.data.local.ArticleDao
 import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.data.service.ApiHelper
+import javax.inject.Inject
 
-class MainRepository(private val apiHelper: ApiHelper,private val dao: ArticleDao) {
+class MainRepository @Inject constructor(private val apiHelper: ApiHelper,private val dao: ArticleDao) {
 
     //For Remote
     suspend fun getNews(topic: String) = apiHelper.getNews(topic = topic)

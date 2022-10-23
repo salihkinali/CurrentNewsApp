@@ -12,7 +12,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.salihkinali.currentnewsapp.R
 import com.salihkinali.currentnewsapp.databinding.ActivityMainBinding
 import com.salihkinali.currentnewsapp.util.visible
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
