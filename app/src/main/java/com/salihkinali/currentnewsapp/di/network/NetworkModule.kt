@@ -1,7 +1,7 @@
 package com.salihkinali.currentnewsapp.di.network
 
+import com.salihkinali.currentnewsapp.BuildConfig
 import com.salihkinali.currentnewsapp.data.service.ApiService
-import com.salihkinali.currentnewsapp.util.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +18,7 @@ object NetworkModule {
     @Singleton
     fun getRetrofitClient(): Retrofit = Retrofit.Builder()
 
-        .baseUrl(BASE_URL)
+        .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

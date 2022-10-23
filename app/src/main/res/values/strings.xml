@@ -23,7 +23,9 @@
     <string name="share_friend">Share to Friends</string>
     <string name="top_trending">Breaking News</string>
     <string name="technology_news">Technology News</string>
-    <string name="example_explain">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
+    <string name="first_presentation">It is an award-winning service that brings together all kinds of news, popular articles and conversations that are read by millions of people every day, related to their interests or passions. With everything in one place, reading news, collecting and sharing news has never been easier and more beautiful.</string>
+    <string name="second_presentation">For everything from travel to technology to design, there is something to explore and many interesting areas to explore. Here is an application where you can find everything you are looking for.</string>
+    <string name="thirt_presentation">Get the trusted global news, trusted data, and expert insights you need to stay ahead. The CurrentNews app brings you the international business news, expert analytics and market data you need to stay ahead.</string>
     <string name="get_started">Get Started</string>
     <string name="news_search">SEARCH NEWS IN THE WORLD</string>
     <string name="news_find">FIND NEWS ANY WHERE THEY</string>

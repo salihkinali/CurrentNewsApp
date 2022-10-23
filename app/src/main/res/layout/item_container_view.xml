@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/_18sp"
         android:textStyle="bold"
+        android:textColor="@color/dark_gray"
         android:fontFamily="@font/days_one"
         android:layout_marginTop="@dimen/space_20"
         android:layout_marginStart="@dimen/space_20"
@@ -31,8 +32,9 @@
         android:id="@+id/descriptionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/space_14s"
-        android:fontFamily="@font/days_one"
+        android:textSize="@dimen/space_16s"
+        android:textColor="@color/presentation_text"
+        android:fontFamily="sans-serif-condensed-medium"
         android:layout_margin="@dimen/space_20"
         tools:text="sfsdfsdf ssdfsdfsdf s" />
 </LinearLayout>

@@ -8,7 +8,7 @@ import com.squareup.picasso.Picasso
 fun ImageView.downloadImage(url: String?) {
     Picasso.get()
         .load(url)
-        .placeholder(R.drawable.ic_launcher_foreground)
+        .placeholder(R.color.white)
         .error(R.drawable.ic_launcher_background)
         .into(this)
 }

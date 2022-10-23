@@ -13,4 +13,5 @@
     <dimen name="space_60">60dp</dimen>
     <dimen name="space_14s">14sp</dimen>
     <dimen name="space_40">40dp</dimen>
+    <dimen name="space_16s">16sp</dimen>
 </resources>

@@ -131,17 +131,17 @@ class OnboardingFragment : Fragment() {
             OnBoardingItem(
                 imageId = R.drawable.new_search,
                 textTitle = getString(R.string.news_connect),
-                textDescription = getString(R.string.example_explain)
+                textDescription = getString(R.string.first_presentation)
             ),
             OnBoardingItem(
                 imageId = R.drawable.new_guide,
                 textTitle = getString(R.string.news_find),
-                textDescription = getString(R.string.add_to_favorite_list)
+                textDescription = getString(R.string.second_presentation)
             ),
             OnBoardingItem(
-                imageId = R.drawable.new_search,
+                imageId = R.drawable.news_connect,
                 textTitle = getString(R.string.news_search),
-                textDescription = getString(R.string.example_explain)
+                textDescription = getString(R.string.thirt_presentation)
             )
         )
     }

@@ -20,7 +20,6 @@ abstract class SwipeDeleteCallback(mContext: Context) :
     private val intrinsicWidth: Int
     private val intrinsicHeight: Int
 
-    //Burada kaydırma yönünü belirledik. Yön işaretini makeMovementFlags statik yönteminde döndürdük.
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
@@ -28,7 +27,6 @@ abstract class SwipeDeleteCallback(mContext: Context) :
         return makeMovementFlags(0, ItemTouchHelper.LEFT)
     }
 
-    //Bu metod sürükle ve bırak için kullanılır. Kullanmıcagımız için, false döndürdüm.
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -37,7 +35,6 @@ abstract class SwipeDeleteCallback(mContext: Context) :
         return false
     }
 
-    //Bu metodda kaydırmanın gerçekleştiğini gösteren özel görünümümüzü oluşturuyoruz.
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -84,7 +81,6 @@ abstract class SwipeDeleteCallback(mContext: Context) :
         c.drawRect(left, top, right, bottom, mClearPaint)
     }
 
-    //Burada float değerini döndürüyoruz. örnek 0.7f, RecyclerView satırındaki yüzde 70 kaydırma işleminin kaydırma olarak sayılacağı anlamına gelir.
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
         return 0.7f
     }
