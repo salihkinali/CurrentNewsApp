@@ -15,15 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.salihkinali.currentnewsapp.R
 import com.salihkinali.currentnewsapp.databinding.FragmentOnboardingBinding
-import com.salihkinali.currentnewsapp.ui.adapter.onboarding.OnBoardingAdapter
-import com.salihkinali.currentnewsapp.ui.adapter.onboarding.OnBoardingItem
+import com.salihkinali.currentnewsapp.data.model.OnBoardingItem
 
 
 class OnboardingFragment : Fragment() {
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
     private val sharedPref by lazy { requireActivity().getSharedPreferences("boarding", Context.MODE_PRIVATE) }
-    private val adapter by lazy { OnBoardingAdapter() }
+    private val adapter:OnBoardingAdapter by lazy { OnBoardingAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +30,6 @@ class OnboardingFragment : Fragment() {
             navigateHome()
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

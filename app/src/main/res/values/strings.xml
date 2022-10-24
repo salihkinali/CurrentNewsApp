@@ -9,7 +9,7 @@
     <string name="news_image" translatable="false">News Image</string>
     <string name="search_text" translatable="false">You can search everything in the world.</string>
     <string name="search" translatable="false">Search</string>
-    <string name="go_to_source" translatable="false">Source Code</string>
+    <string name="go_to_source" translatable="false">Source</string>
     <string name="example" translatable="false">Example</string>
     <string name="add_to_favorite_list">Add to Favorite</string>
     <string name="added_favorite">Added Favorite</string>

@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.FragmentHomeBinding
-import com.salihkinali.currentnewsapp.ui.adapter.base.Adapter
-import com.salihkinali.currentnewsapp.ui.adapter.technology.TechAdapter
+import com.salihkinali.currentnewsapp.ui.home.technology.TechnologyAdapter
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,17 +22,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: NewsViewModel by viewModels()
 
-    private val techAdapter by lazy { TechAdapter {
-        val action = HomeFragmentDirections.homeToDetailFragment(it)
-        findNavController().navigate(action)
-    }
-    }
-    private val adapter by lazy {
-        Adapter { article ->
-            val action = HomeFragmentDirections.homeToDetailFragment(article)
-            findNavController().navigate(action)
-        }
-    }
+    private val techAdapter: TechnologyAdapter by lazy { TechnologyAdapter(::navigateDetailPage) }
+
+    private val adapter: HomeAdapter by lazy { HomeAdapter(::navigateDetailPage) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,6 +74,12 @@ class HomeFragment : Fragment() {
 
         binding.rvTechnology.adapter = techAdapter
         binding.rvTechnology.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+    }
+
+
+    private fun navigateDetailPage(item: Article) {
+        val action = HomeFragmentDirections.homeToDetailFragment(item)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

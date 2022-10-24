@@ -1,5 +1,6 @@
 package com.salihkinali.currentnewsapp.ui.favorite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.salihkinali.currentnewsapp.R
+import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.FragmentFavoriteBinding
-import com.salihkinali.currentnewsapp.ui.adapter.base.Adapter
 import com.salihkinali.currentnewsapp.util.SwipeDeleteCallback
 import com.salihkinali.currentnewsapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,11 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoriteFragment : Fragment() {
     private lateinit var binding: FragmentFavoriteBinding
     private val viewModel: FavoriteViewModel by viewModels()
-    private val adapter by lazy { Adapter {
-        val action = FavoriteFragmentDirections.favoriteToNewDetailFragment(it,true)
-        findNavController().navigate(action)
-    }
-    }
+    private val adapter: FavoriteAdapter by lazy { FavoriteAdapter(::navigateDetailPage) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,6 +76,12 @@ class FavoriteFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.savedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.savedRecyclerView.adapter = adapter
+    }
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun navigateDetailPage(article: Article) {
+      val action = FavoriteFragmentDirections.favoriteToNewDetailFragment(article,true)
+        findNavController().navigate(action)
     }
 
 }

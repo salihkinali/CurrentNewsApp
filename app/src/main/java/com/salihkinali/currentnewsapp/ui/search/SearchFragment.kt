@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.FragmentSearchBinding
-import com.salihkinali.currentnewsapp.ui.adapter.base.Adapter
 import com.salihkinali.currentnewsapp.util.Status
 import com.salihkinali.currentnewsapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,11 +21,8 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SearchViewModel by viewModels()
-    private val adapter by lazy {
-        Adapter{
-            val action = SearchFragmentDirections.searchToNewDetailFragment(it)
-            findNavController().navigate(action)
-        }
+    private val adapter:SearchAdapter by lazy { SearchAdapter(::navigateDetailPage)
+
     }
 
     override fun onCreateView(
@@ -92,6 +89,12 @@ class SearchFragment : Fragment() {
                 return false
             }
         })
+    }
+
+
+    private fun navigateDetailPage(item: Article) {
+        val action = SearchFragmentDirections.searchToNewDetailFragment(item)
+        findNavController().navigate(action)
     }
 
 }

@@ -21,3 +21,9 @@ fun View.visible(visible: Boolean) {
     }
 }
 
+fun String.timeConversion(s:String):String{
+        val getDate = s.substring(0, 10)
+        val getTime = s.substring(11, 16)
+        return "Publish Time: $getDate / $getTime"
+}
+

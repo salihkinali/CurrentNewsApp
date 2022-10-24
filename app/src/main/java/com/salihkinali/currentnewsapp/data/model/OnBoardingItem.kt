@@ -1,4 +1,4 @@
-package com.salihkinali.currentnewsapp.ui.adapter.onboarding
+package com.salihkinali.currentnewsapp.data.model
 
 data class OnBoardingItem (
     val imageId: Int,

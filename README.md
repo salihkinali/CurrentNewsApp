@@ -6,7 +6,7 @@
 <img src="/previews/main.png" width="20%"/>
 <img src="/previews/search.png" width="20%"/>
 <img src="/previews/favorite.png" width="20%"/>
-<img src="/previews/detail.png" width="20%"/>
+<img src="/previews/detail_page.png" width="20%"/>
 <img src="/previews/webview.png" width="20%"/>
 <img src="/previews/setting.png" width="20%"/>
 
@@ -26,6 +26,7 @@
 - [Android Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dependency Injection Library
 - [Retrofit](https://square.github.io/retrofit/) A type-safe HTTP client for Android and Java
 - [Room](https://developer.android.com/training/data-storage/room) Local and listing of data
+- [Gson](https://github.com/google/gson) Gson is a Java library that can be used to convert Java Objects into their JSON representation. It can also be used to convert a JSON string to an equivalent Java object
 - [Picasso](https://square.github.io/picasso/) An image loading library for Android backed by Kotlin Coroutines
 - Material Design
 
@@ -45,12 +46,12 @@
     │   │── network         # NetworkModule
     │
     ├── ui                  # Activity/View(Ui) layer
-    │   ├── adapter         # Base,Onboarding and technology adapters
+    │   ├── base            # Base Adapter and Base ViewHolder
     │   ├── detail          # NewsDetail page and viewmodel
     |   ├── favorite        # Favorite Page and Room Database
     |   ├── home            # Home Page 
     |   ├── onboarding      # Introduction of the application
-    |   ├── search          # Search part of the application
+    |   ├── search          # Search news part of the application
     |   ├── setting         # Sharing codes and getting feedback
     |   ├── webview         # Referral to the original source of the news
     |   
