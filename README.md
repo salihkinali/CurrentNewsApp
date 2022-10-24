@@ -1,12 +1,13 @@
 <h1 align="center">CurrentNewApp</h1>
 
-## App Screeshots
+## App Screenshots
 <p align="center">
 <img src="/previews/onboarding.png" width="20%"/>
 <img src="/previews/main.png" width="20%"/>
 <img src="/previews/search.png" width="20%"/>
 <img src="/previews/favorite.png" width="20%"/>
 <img src="/previews/detail.png" width="20%"/>
+<img src="/previews/webview.png" width="20%"/>
 <img src="/previews/setting.png" width="20%"/>
 
 </p>
@@ -24,8 +25,10 @@
 - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
 - [Android Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - Dependency Injection Library
 - [Retrofit](https://square.github.io/retrofit/) A type-safe HTTP client for Android and Java
+- [Room](https://developer.android.com/training/data-storage/room) Local and listing of data
 - [Picasso](https://square.github.io/picasso/) An image loading library for Android backed by Kotlin Coroutines
 - Material Design
+
 
 ## Package Structure
 
