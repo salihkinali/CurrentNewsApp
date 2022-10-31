@@ -1,4 +1,5 @@
-<h1 align="center">CurrentNewApp</h1>
+<h1 align="center">CurrentNewsApp</h1>
+This application has been developed in accordance with the Android Architectural Architecture using the Android jetpack libraries.
 
 ## App Screenshots
 <p align="center">
@@ -33,29 +34,29 @@
 
 ## Package Structure
 
-    com.salihkinali.currentnewsapp  # Root Package
+    salihkinali.currentnewsapp  # Root Package
     .
-    ├── data                # Data layer
-    │   ├── local           # ArticleDao,Converters and NewsDatabase     
-    │   ├── model           # Article, News and Source Data classes
-    │   ├── repository      # MainRepository
-    │   ├── service         # ApiHelper and ApiService
+    ├── data                    # Data layer
+    │   ├── local               # ArticleDao,Converters and NewsDatabase     
+    │   ├── model               # Article, News and Source Data classes
+    │   ├── repository          # MainRepository
+    │   ├── service             # ApiHelper and ApiService
     |
-    ├── di                  # Dependency Injection              
-    │   │── database        # Database Module
-    │   │── network         # NetworkModule
+    ├── di                      # Dependency Injection              
+    │   │── database            # Database Module
+    │   │── network             # NetworkModule
     │
-    ├── ui                  # Activity/View(Ui) layer
-    │   ├── base            # Base Adapter and Base ViewHolder
-    │   ├── detail          # NewsDetail page and viewmodel
-    |   ├── favorite        # Favorite Page and Room Database
-    |   ├── home            # Home Page 
-    |   ├── onboarding      # Introduction of the application
-    |   ├── search          # Search news part of the application
-    |   ├── setting         # Sharing codes and getting feedback
-    |   ├── webview         # Referral to the original source of the news
+    ├── ui                      # Activity/View(Ui) layer
+    │   ├── base                # Base Adapter and Base ViewHolder
+    │   ├── detail              # NewsDetail page and viewmodel
+    |   ├── favorite            # Favorite Page and Room Database
+    |   ├── home                # Home Page 
+    |   ├── onboarding          # Introduction of the application
+    |   ├── search              # Search news part of the application
+    |   ├── setting             # Sharing codes and getting feedback
+    |   ├── webview             # Referral to the original source of the news
     |   
-    ├── util                # Util Classes / Kotlin extensions / Helper Classes 
+    ├── util                    # Util Classes / Kotlin extensions / Helper Classes 
 
 
 
