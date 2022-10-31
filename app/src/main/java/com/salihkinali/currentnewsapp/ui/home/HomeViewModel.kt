@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
 
    // private val mainRepository = MainRepository(ApiHelper(RetrofitBuilder.apiService))
     private var _responseNews = MutableLiveData<Resource<MutableList<News>>>()

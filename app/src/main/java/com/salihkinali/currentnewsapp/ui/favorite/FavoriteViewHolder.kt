@@ -8,10 +8,8 @@ import com.salihkinali.currentnewsapp.util.timeConversion
 
 class FavoriteViewHolder(
     private val binding: NewsCardDesignBinding,
-    private val onItemClickListener: ((item: Article) -> Unit)?
+    private val onItemClickListener: ((Article) -> Unit)?
 ) : BaseViewHolder<Article>(binding.root) {
-
-
     override fun onBind(data: Article) {
         binding.apply {
             titleText.text = data.title
@@ -22,4 +20,5 @@ class FavoriteViewHolder(
             materialCardView.setOnClickListener { onItemClickListener?.invoke(data) }
         }
     }
+
 }
