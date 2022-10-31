@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.salihkinali.currentnewsapp.data.model.Article
 import com.salihkinali.currentnewsapp.databinding.NewsCardDesignBinding
 import com.salihkinali.currentnewsapp.ui.base.BaseListAdapter
-import com.salihkinali.currentnewsapp.ui.home.HomeViewHolder
 
 class SearchAdapter(private val onItemClickListener: ((Article) -> Unit)?) :
     BaseListAdapter<Article>(
@@ -20,7 +19,7 @@ class SearchAdapter(private val onItemClickListener: ((Article) -> Unit)?) :
     ): RecyclerView.ViewHolder {
         val binding =
             NewsCardDesignBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HomeViewHolder(binding, onItemClickListener)
+        return SearchViewHolder(binding, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
